@@ -21,8 +21,8 @@ export const Footer: React.FC<Props> = ({
     }, 0);
   };
 
-  const isAllTodosCompleted = () => {
-    return todoList.every(todo => todo.completed === true);
+  const isAllTodosNotCompleted = () => {
+    return todoList.every(todo => todo.completed === false);
   };
 
   return (
@@ -38,7 +38,7 @@ export const Footer: React.FC<Props> = ({
         type="button"
         className="todoapp__clear-completed"
         data-cy="ClearCompletedButton"
-        disabled={!isAllTodosCompleted()}
+        disabled={isAllTodosNotCompleted()}
       >
         Clear completed
       </button>
