@@ -27,10 +27,6 @@ export const TodoItem: React.FC<Props> = ({ todo, showErrorMessage }) => {
     setIsCompleted(!isCompleted);
   };
 
-  // useEffect(() => {
-  //   setIsLoading(false);
-  // }, []);
-
   return (
     <div
       data-cy="Todo"

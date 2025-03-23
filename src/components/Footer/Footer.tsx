@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Todo } from '../../types/Todo';
-import { FilterTypes } from '../../types/FilterTypes';
+import { FilterType } from '../../types/FilterType';
 import { Filter } from '../Filter';
 
 type Props = {
   todoList: Todo[];
   activeFilter: string;
-  setActiveFilter: (filter: FilterTypes) => void;
+  setActiveFilter: (filter: FilterType) => void;
 };
 
 export const Footer: React.FC<Props> = ({
@@ -22,7 +22,7 @@ export const Footer: React.FC<Props> = ({
   };
 
   const isAllTodosNotCompleted = () => {
-    return todoList.every(todo => todo.completed === false);
+    return todoList.every(todo => !todo.completed);
   };
 
   return (

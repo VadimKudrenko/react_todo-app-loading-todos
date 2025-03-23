@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Todo } from '../../types/Todo';
-import { FilterTypes } from '../../types/FilterTypes';
+import { FilterType } from '../../types/FilterType';
 
 import { TodoItem } from '../Todo/TodoItem';
 import { Footer } from '../Footer/Footer';
@@ -12,22 +12,20 @@ type Props = {
 };
 
 export const TodoList: React.FC<Props> = ({ todoList, showErrorMessage }) => {
-  const [activeFilter, setActiveFilter] = useState<FilterTypes>(
-    FilterTypes.all,
-  );
+  const [activeFilter, setActiveFilter] = useState<FilterType>(FilterType.all);
 
   const filteredList = (list: Todo[]) => {
     switch (activeFilter) {
-      case FilterTypes.all: {
+      case FilterType.all: {
         return list;
       }
 
-      case FilterTypes.active: {
-        return list.filter(item => item.completed === false);
+      case FilterType.active: {
+        return list.filter(item => !item.completed);
       }
 
-      case FilterTypes.completed: {
-        return list.filter(item => item.completed === true);
+      case FilterType.completed: {
+        return list.filter(item => item.completed);
       }
     }
   };

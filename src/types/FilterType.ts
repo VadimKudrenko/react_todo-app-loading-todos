@@ -1,4 +1,4 @@
-export enum FilterTypes {
+export enum FilterType {
   all = 'All',
   active = 'Active',
   completed = 'Completed',

@@ -10,6 +10,7 @@ type Props = {
 export const TodoForm: React.FC<Props> = ({ todoList, showErrorMessage }) => {
   const [todoTitle, setTodoTitle] = useState('');
 
+  const areAllTodosCompleted = todoList?.every(todo => todo.completed);
   const newTodoRef = useRef<HTMLInputElement>(null);
 
   const handlerSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
@@ -24,15 +25,6 @@ export const TodoForm: React.FC<Props> = ({ todoList, showErrorMessage }) => {
     showErrorMessage('Unable to add a todo');
 
     setTodoTitle('');
-
-    // const newTodo: Todo = {
-    //   id: Number(new Date()),
-    //   userId: USER_ID,
-    //   title: newTodoTitle,
-    //   completed: false,
-    // };
-
-    // setTodoList(currentList => [newTodo, ...currentList]);
   };
 
   useEffect(() => {
@@ -47,7 +39,7 @@ export const TodoForm: React.FC<Props> = ({ todoList, showErrorMessage }) => {
         <button
           type="button"
           className={classNames('todoapp__toggle-all', {
-            active: todoList?.every(todo => todo.completed === true),
+            active: areAllTodosCompleted,
           })}
           data-cy="ToggleAllButton"
         />
